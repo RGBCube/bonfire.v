@@ -12,7 +12,7 @@ pub type Snowflake = u64
 // created_at returns the Time the Snowflake was created at.
 [inline]
 pub fn (s Snowflake) created_at() Time {
-	seconds, milliseconds := v(i64((s >> 22) + .discord_epoch_ms))
+	seconds, milliseconds := separate_seconds_and_milliseconds(i64((s >> 22) + .discord_epoch_ms))
 	return time.unix2(seconds, milliseconds * 1000)
 }
 
