@@ -1,11 +1,11 @@
-name: Verify Formatting
+name: Test
 
 on:
   - pull_request
   - push
 
 jobs:
-  verify-formatting:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Set Up V
@@ -16,5 +16,5 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Verify That The Code Is Formatted
-        run: v fmt -verify ./
+      - name: Test
+        run: v test ./
