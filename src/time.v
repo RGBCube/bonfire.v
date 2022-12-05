@@ -17,6 +17,7 @@ pub enum TimeFormat as u8 {
 }
 
 // format returns a Discord representation of the time in the given format.
+// E.g. <t:1670178420:f> for 4 December 2022 21:27.
 [inline]
 pub fn (t Time) format(format TimeFormat) string {
 	return '<t:${t.unix}:${rune(format)}>'

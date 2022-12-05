@@ -2,7 +2,7 @@ module bonfire
 
 import time
 
-const discord_epoch_ms = 1420070400000
+const discord_epoch_milliseconds = u64(1420070400000)
 
 // Snowflake is a Discord snowflake ID. It holds the time the
 // object was created, the ID of the worker that created it,
@@ -10,9 +10,9 @@ const discord_epoch_ms = 1420070400000
 pub type Snowflake = u64
 
 // created_at returns the Time the Snowflake was created at.
-[inline]
 pub fn (s Snowflake) created_at() Time {
-	seconds, milliseconds := separate_seconds_and_milliseconds(i64((s >> 22) + .discord_epoch_ms))
+	seconds, milliseconds := separate_seconds_and_milliseconds(u64(s >> 22) +
+		.discord_epoch_milliseconds)
 	return time.unix2(seconds, milliseconds * 1000)
 }
 
@@ -38,10 +38,10 @@ pub fn (s Snowflake) sequence_number() u16 {
 // new_snowflake returns a snowflake ID from the given unix timestamp (in seconds).
 [inline]
 fn new_snowflake(unix u64) Snowflake {
-	return (unix * 1000 - .discord_epoch_ms) << 22
+	return ((unix * 1000) - .discord_epoch_milliseconds) << 22
 }
 
 [inline]
-fn separate_seconds_and_milliseconds(ms u64) (i64, int) {
-	return i64(ms / 1000), ms % 1000
+fn separate_seconds_and_milliseconds(milliseconds u64) (i64, int) {
+	return i64(milliseconds / 1000), int(milliseconds % 1000)
 }
