@@ -2,7 +2,7 @@
 
 <h1>bonfire.v</h1>
 
-[Docs](https://rgbcube.github.io/docs/bonfire)
+[Docs](https://rgbcube.github.io/docs/bonfire) | [Examples](https://github.com/RGBCube/bonfire.v/tree/master/examples)
 
 A Discord API wrapper for the V programming language.
 
