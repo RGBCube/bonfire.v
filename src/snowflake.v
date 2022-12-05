@@ -4,9 +4,9 @@ import time
 
 const discord_epoch_milliseconds = u64(1420070400000)
 
-// Snowflake is a Discord snowflake ID. It holds the time the
-// object was created, the ID of the worker that created it,
-// the ID of the process that created it, and a sequence number.
+// Snowflake is a Discord ID. It holds the time the object
+// was created, the ID of the worker that created it, the
+// ID of the process that created it, and a sequence number.
 pub type Snowflake = u64
 
 // created_at returns the Time the Snowflake was created at.
@@ -29,8 +29,8 @@ pub fn (s Snowflake) process_id() u8 {
 	return u8((s & 0x1F000) >> 12)
 }
 
-// sequence_number returns the sequence number of the Snowflake (For every Snowflake that
-// is generated in the process, the sequence number is incremented by 1).
+// sequence_number returns the sequence number of the Snowflake (For every Snowflake
+// that is generated in the process, the sequence number is incremented by 1.).
 [inline]
 pub fn (s Snowflake) sequence_number() u16 {
 	return u16(s & 0xFFF)
@@ -44,6 +44,7 @@ fn new_snowflake(unix u64) Snowflake {
 	// vfmt on
 }
 
+// separate_seconds_and_milliseconds separates the seconds and milliseconds from the given milliseconds.
 [inline]
 fn separate_seconds_and_milliseconds(milliseconds u64) (i64, int) {
 	return i64(milliseconds / 1000), int(milliseconds % 1000)

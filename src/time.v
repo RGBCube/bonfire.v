@@ -6,6 +6,7 @@ import time
 pub type Time = time.Time
 
 // TimeFormat is an enum of all possible Discord timestamp formats.
+// See https://discord.com/developers/docs/reference#message-formatting-timestamp-styles.
 pub enum TimeFormat as u8 {
 	short_time = u8(`t`) // 21:27
 	long_time = u8(`T`) // 21:27:42
@@ -17,7 +18,7 @@ pub enum TimeFormat as u8 {
 }
 
 // format returns a Discord representation of the time in the given format.
-// E.g. <t:1670178420:f> for 4 December 2022 21:27.
+// E.g. <t:1670178420:f> for TimeFormat.short_date_time ran on a time of 1670178420.
 [inline]
 pub fn (t Time) format(format TimeFormat) string {
 	return '<t:${t.unix}:${rune(format)}>'
