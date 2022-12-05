@@ -11,8 +11,9 @@ pub type Snowflake = u64
 
 // created_at returns the Time the Snowflake was created at.
 pub fn (s Snowflake) created_at() Time {
-	seconds, milliseconds := separate_seconds_and_milliseconds(u64(s >> 22) +
-		.discord_epoch_milliseconds)
+	// vfmt off
+	seconds, milliseconds := separate_seconds_and_milliseconds(u64(s >> 22) + discord_epoch_milliseconds)
+	// vfmt on
 	return time.unix2(seconds, milliseconds * 1000)
 }
 
@@ -38,7 +39,9 @@ pub fn (s Snowflake) sequence_number() u16 {
 // new_snowflake returns a snowflake ID from the given unix timestamp (in seconds).
 [inline]
 fn new_snowflake(unix u64) Snowflake {
-	return ((unix * 1000) - .discord_epoch_milliseconds) << 22
+	// vfmt off
+	return ((unix * 1000) - discord_epoch_milliseconds) << 22
+	// vfmt on
 }
 
 [inline]
