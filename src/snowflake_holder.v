@@ -8,6 +8,7 @@ pub struct SnowflakeHolder {
 }
 
 // created_at returns the time the snowflake was created.
+[inline]
 fn (sh SnowflakeHolder) created_at() Time {
 	return sh.id.created_at()
 }
