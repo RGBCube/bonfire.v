@@ -18,7 +18,7 @@ pub enum TimeFormat as u8 {
 }
 
 // format returns a Discord representation of the time in the given format.
-// E.g. <t:1670178420:f> for TimeFormat.short_date_time ran on a time of 1670178420.
+// E.g. `<t:1670178420:f>` for `TimeFormat.short_date_time` ran on a time of `1670178420`.
 [inline]
 pub fn (t Time) format(format TimeFormat) string {
 	return '<t:${t.unix}:${rune(format)}>'
