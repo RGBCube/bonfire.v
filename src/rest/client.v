@@ -6,7 +6,7 @@ const ratelimit_timeout = 30
 
 [heap]
 struct RestClient {
-	token   string
+	token string
 }
 
 [params]
